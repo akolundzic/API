@@ -31,7 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: -webkit-linear-gradient(#083b4c, #0a433f);
+  background: -webkit-linear-gradient(#0a433f, #11789a);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   /*background-image: url('pics/venom1.jpeg');*/
   background-blend-mode: multiply;
@@ -108,7 +108,7 @@ input {
   justify-content: center;
   list-style: none;
   flex: 1 1 0%;
-  background: -webkit-linear-gradient(#028f51, #0a433f);
+  background: -webkit-linear-gradient(#04a961 1%, #0d766f, #055853);
 }
 
 .menu li {
