@@ -5,12 +5,15 @@ import GetData from "./components/GetData";
 import Header from "./components/Header";
 import Display from "./components/Display";
 
-const APIURL = "http://hn.algolia.com/api/v1/search?query=story";
+const APIURL = "http://hn.algolia.com/api/v1/search?query=";
 
 function App() {
   const [inputform, setInputform] = useState(""); //input search in header
-  const [errormessage, setErrorMessage] = useState(""); //set error message
-  let story;
+  //const [isLoading, setLoading] = useState(false);
+  const [query, setQuery] = useState("story");
+  // //const [item, setItem] = useState([]);
+  // setQuery(query);
+  const id = "story";
   const handleChange = (e) => {
     setInputform(e.target.value);
   };
@@ -26,8 +29,7 @@ function App() {
       />
 
       <article>
-        <GetData id={story} />
-        <Display />
+        <GetData id={inputform} />
       </article>
     </div>
   );

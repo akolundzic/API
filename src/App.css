@@ -36,9 +36,10 @@ h1 {
   text-align: left;
 }
 
-h3 {
-  padding-top: 0;
-  font-weight: 200;
+h4 {
+  padding-top: 0.4rem;
+  font-weight: 300;
+  font-size: 1.4rem;
 }
 /*BUTTON,INPUT,SELECTION*/
 input,
@@ -122,7 +123,9 @@ input {
 }
 #ul li {
   display: inline;
-  padding-right: 2%;
+  padding-right: 0.2%;
   flex: 1 1 0%;
   color: rgb(142, 197, 171);
+  font-size: 1rem;
+  padding-left: 1rem;
 }

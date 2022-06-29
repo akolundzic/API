@@ -1,15 +1,15 @@
 import React from "react";
 
-const Display = () => {
+const Display = ({ points, username, title, comments }) => {
   return (
-    <div id="ul">
-      <h3>Topic 2</h3>
+    <>
+      <h4>{title}</h4>
       <ul>
-        <li>username</li>
-        <li>2 hours ago</li>
-        <li>comments</li>
+        <li>{points} points</li>
+        <li>by {username}</li>
+        <li>{comments} comments</li>
       </ul>
-    </div>
+    </>
   );
 };
 

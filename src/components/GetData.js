@@ -1,51 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Display from "./Display";
 import axios from "axios";
-//using GetDat = async (inputform) => ?
+
 const GetData = ({ id }) => {
-  const axios = require("axios");
   // await axios.get(url, { params: { answer: 42 } });
   // url?params=answer, example: ...search?query=story
-  //no await possible, even i took async fetchdata
-  useEffect(() => {
-    const fetchdata = (id) => {
-      if (!id) {
-        let story;
-        id = story;
-      }
-      try {
-        const res = axios({
-          url: "http://hn.algolia.com/api/v1/search",
-          method: "get",
+  const [item, setItem] = useState();
+  const [query, setQuery] = useState(id);
 
-          params: { query: id },
-          headers: {
-            "Content-Type": "application/json",
-          },
+  const fetchdata = () => {
+    if (!query) {
+      setQuery("story");
+    }
+    try {
+      const res = axios({
+        url: "http://hn.algolia.com/api/v1/search",
+        method: "get",
+        timeout: 1000,
+        params: { query: { query } },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      res
+        .then((response) => response.data)
+        .then((data) => {
+          setItem(data.hits);
         });
-
-        res
-          .then((response) => response.data)
-          .then((data) => {
-            console.log(data.hits);
-          });
-
-        // console.log("Try");
-      } catch (err) {
-        if (err.response) {
-          // The client was given an error response (5xx, 4xx)
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-          console.log("Error: " + err.message);
-        }
+      return setItem;
+    } catch (err) {
+      if (err.response) {
+        console.log("Error: " + err.message);
       }
-    };
-    fetchdata(id);
-  }, []);
+    }
+  };
 
+  useEffect(() => {
+    fetchdata();
+
+    // setTimeout(() => {
+    //   console.log("This will run after 1 second!");
+    // }, 1000);
+    console.log("Call");
+  }, []);
+  console.log(item);
+  //item[i].author,item[i].title,item[i].num_comments,item[i].point
   return (
-    <div>
-      <h1></h1>
+    <div id="ul">
+      <>
+        <h4>{item[0].title}</h4>
+        <ul>
+          <li>{item[0].points} points</li>
+          <li>by {item[0].author}</li>
+          <li>{item[0].num_comments} comments</li>
+        </ul>
+      </>
     </div>
   );
 };
