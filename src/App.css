@@ -5,28 +5,6 @@
   --redhover: #f46e6ec2;
 }
 
-main {
-  /* background-color: none;
-  color: rgb(240, 248, 255);
-  margin-top: 1rem;
-  background-color: hsla(195, 52%, 24%, 0.355);
-  opacity: 0.9;
-  box-sizing: border-box;
-  text-align: left;
-  margin: 2% 10% 0 10%;
-  padding: 1% 2.5%;
-  border-radius: 1rem; */
-
-  flex: 1 1 0%;
-  padding: 2rem 1rem;
-  /* border: 1px solid rgb(34, 192, 255); */
-  border-radius: 1rem;
-  height: 1.25rem;
-  font-size: 1.25rem;
-  width: 50vh;
-  text-align: center;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -36,10 +14,14 @@ body {
   /*background-image: url('pics/venom1.jpeg');*/
   background-blend-mode: multiply;
   background-size: cover;
-  margin: 0;
   font-size: 1.5rem;
-  text-align: center;
+  text-align: flex;
   color: aliceblue;
+}
+#box {
+  margin-left: 6rem;
+  margin-right: 6rem;
+  background-color: #083b4c27;
 }
 
 h1 {
@@ -50,13 +32,15 @@ h1 {
 }
 
 /* JOHNS TO DO LIST HEADING */
-main h1 {
-  text-align: center;
-}
-form {
-  display: inline;
+h1 {
+  text-align: left;
 }
 
+h3 {
+  padding-top: 0;
+  font-weight: 200;
+}
+/*BUTTON,INPUT,SELECTION*/
 input,
 select,
 #a,
@@ -97,7 +81,7 @@ input {
   background-color: #083b4c51;
 }
 
-/*NAVBAR ONLY */
+/*HEADER  */
 .menu {
   height: 6rem;
   width: 100%;
@@ -116,8 +100,6 @@ input {
   font-size: 1rem;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   padding-block: 0;
   padding-top: -2rem;
 }
@@ -128,6 +110,19 @@ input {
   height: 3rem;
 }
 
+/*LIST*/
 #ul {
-  margin-top: 5%;
+  margin-top: 0;
+  justify-content: left;
+  background-color: hsla(176, 100%, 63%, 0.055);
+  border-radius: 10px;
+  margin-left: 6rem;
+  margin-right: 6rem;
+  padding: 2rem 1rem;
+}
+#ul li {
+  display: inline;
+  padding-right: 2%;
+  flex: 1 1 0%;
+  color: rgb(142, 197, 171);
 }
