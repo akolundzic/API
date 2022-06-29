@@ -127,3 +127,7 @@ input {
   width: 6rem;
   height: 3rem;
 }
+
+#ul {
+  margin-top: 5%;
+}

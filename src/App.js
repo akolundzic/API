@@ -1,20 +1,21 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Test from "./components/Test";
+import GetData from "./components/GetData";
 import Header from "./components/Header";
+import Display from "./components/Display";
 
-const API_URL = "http://hn.algolia.com/api/v1/search?query=";
+const APIURL = "http://hn.algolia.com/api/v1/search?query=story";
 
 function App() {
   const [inputform, setInputform] = useState(""); //input search in header
-  const [data, setData] = useState(null); //transfer data and handler to header
+  const [errormessage, setErrorMessage] = useState(""); //set error message
+  let story;
   const handleChange = (e) => {
     setInputform(e.target.value);
   };
-
   const handleClick = (e) => e.preventDefault();
-  let stringselection = "story";
+
   return (
     <div>
       <Header
@@ -23,8 +24,11 @@ function App() {
         hanhdleClick={handleClick}
         setInputform={setInputform}
       />
-      <Test inputform={inputform} />
-      <article></article>
+
+      <article>
+        <GetData id={story} />
+        <Display />
+      </article>
     </div>
   );
 }
