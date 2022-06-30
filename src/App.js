@@ -5,7 +5,7 @@ import SearchForm from "./SearchForm";
 const App = function () {
 
     const [page, setPage] = useState(1);
-    const [url, setUrl] = useState(`http://hn.algolia.com/api/v1/search?tags=story&hitsPerPage=10&page=${page}`);
+    const [url, setUrl] = useState("http://hn.algolia.com/api/v1/search?tags=front_page");
     const [posts, setPosts] = useState(null);
 
 

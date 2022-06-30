@@ -22,7 +22,7 @@ const SearchForm = function ({ setPosts }) {
 
     return (
         <div className="search-form">
-            <FontAwesomeIcon className='blue-font' icon={faMagnifyingGlass} />
+            <FontAwesomeIcon className='gray-font' icon={faMagnifyingGlass} />
             <input onChange={changeHandler} type="text" name="search" id="search" />
         </div>
     );

@@ -3,20 +3,10 @@ import moment from "moment";
 
 const Story = function ({ post }) {
     return (
-        <div className="story">
-            <div >
-                <h4>{post.title}</h4>
-                <a href={post.url} target="_blank">{post.url}</a>
-                <p>created at: {moment(post.created_at).fromNow()}</p>
-                <p>author: {post.author}</p>
-                <p>points: {post.points}</p>
-            </div>
-
-            <br />
-            <hr />
-            <br />
-        </div>
-
+        <article className="story">
+            <h4><a href={post.url} target="_blank">{post.title}</a></h4>
+            <p>{post.points} points | posted {moment(post.created_at).fromNow()} by {post.author} | {post.num_comments} comments</p>
+        </article>
     );
 }
 

@@ -6,13 +6,14 @@
 body {
   font-family: Helvetica, sans-serif;
   font-size: 1rem;
+  background-color: bisque;
 }
 
 .app {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: bisque;
+  
 }
 
 .app h1 {
@@ -36,7 +37,7 @@ body {
 }
 
 .story-list .pagination button {
-  background-color: azure;
+  background-color: beige;
   font-size: 1rem;
   font-weight: 700;
   padding: 10px;
@@ -47,23 +48,23 @@ body {
 }
 
 .story-list .pagination button:hover {
-  background-color: beige;
-}
-
-.story-list .pagination button:disabled {
-  border: 1px solid gray;
-  color: gray;
   background-color: white;
-  cursor: default;
 }
 
 .story {
   background-color: beige;
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.story a {
+  text-decoration: none;
+  color: blue;
 }
 
 .search-form {
+  background-color: azure;
   border-radius: 30px;
   border: 1px solid gray;
   display: flex;
