@@ -7,3 +7,126 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 1rem;
 }
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: bisque;
+}
+
+.app h1 {
+  text-align: center;
+}
+
+.story-list {
+  background-color: beige;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+
+
+.story-list .pagination {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.story-list .pagination button {
+  background-color: azure;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+  color: black;
+}
+
+.story-list .pagination button:hover {
+  background-color: beige;
+}
+
+.story-list .pagination button:disabled {
+  border: 1px solid gray;
+  color: gray;
+  background-color: white;
+  cursor: default;
+}
+
+.story {
+  background-color: beige;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.search-form {
+  border-radius: 30px;
+  border: 1px solid gray;
+  display: flex;
+  font-size: 1.3rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search-form input {
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  margin-left: 10px;
+  flex-grow: 4;
+}
+
+.search-form input:focus,
+.search-form input:active,
+.search-form input:hover {
+  outline: none;
+}
+
+.spinner img {
+  background: none;
+  width: 10%;
+  height: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spinner p {
+  text-align: center;
+}
+
+.svg-component p {
+  text-align: center;
+}
+
+.svg-component svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blue-font {
+  color: #4584ef;
+}
+
+.red-font {
+  color: #e44639;
+}
+
+.yellow-font {
+  color: #f7bc10;
+}
+
+.green-font {
+  color: #38a755;
+}
+
+.gray-font {
+  color: gray;
+}

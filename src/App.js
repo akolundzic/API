@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
-
+import StoryList from "./StoryList";
+import SearchForm from "./SearchForm";
 
 const App = function () {
 
-    const url = "http://hn.algolia.com/api/v1/search?tags=story";
+    const [page, setPage] = useState(1);
+    const [url, setUrl] = useState(`http://hn.algolia.com/api/v1/search?tags=story&hitsPerPage=10&page=${page}`);
+    const [posts, setPosts] = useState(null);
 
-    const [retrievedData, setRetrievedData] = useState(null);
 
     useEffect(() => {
-        setTimeout(
-            () => {
-                fetch(url)
-                    .then(resp => {
-                        return resp.json();
-                    })
-                    .then(data => {
-                        setRetrievedData(data["hits"]);
-                    })
-                    .catch(err => console.error("ERROR: " + err))
-            }, 10)
+        fetch(url)
+            .then(resp => {
+                return resp.json()
+            })
+            .then(data => {
+                setPosts(data.hits)
+            })
+            .catch(err => console.error(err))
     }, []);
 
     return (
-        <div>
-            <h1>Welcome!</h1>
-            {
-                !retrievedData ? <h2>LOADING...</h2> : <h2>DATA LOADED!!!</h2>  
-            }
+        <div className="app">
+            <h1>
+                <span className="green-font">Welcome to Hacker News</span>
+            </h1>
+            <SearchForm setPosts={setPosts} />
+            <StoryList posts={posts} page={page} setPage={setPage} />
         </div>
     );
 }
