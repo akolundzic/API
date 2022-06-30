@@ -5,57 +5,63 @@ import axios from "axios";
 const GetData = ({ id }) => {
   // await axios.get(url, { params: { answer: 42 } });
   // url?params=answer, example: ...search?query=story
-  const [item, setItem] = useState();
+  const [item, setItem] = useState([]);
   const [query, setQuery] = useState(id);
-
-  const fetchdata = () => {
-    if (!query) {
-      setQuery("story");
-    }
-    try {
-      const res = axios({
-        url: "http://hn.algolia.com/api/v1/search",
-        method: "get",
-        timeout: 1000,
-        params: { query: { query } },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      res
-        .then((response) => response.data)
-        .then((data) => {
-          setItem(data.hits);
-        });
-      return setItem;
-    } catch (err) {
-      if (err.response) {
-        console.log("Error: " + err.message);
-      }
-    }
-  };
+  const [maintitle, setMaintitle] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchdata = async () => {
+      if (!query) {
+        setQuery("story");
+      }
+      try {
+        const res = await axios({
+          url: "http://hn.algolia.com/api/v1/search",
+          method: "get",
+          timeout: 1000,
+          params: { query: { query } },
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        await res
+          .then((response) => response.data)
+          .then((data) => {
+            setItem(data.hits);
+            setMaintitle(data.hits[0]);
+          });
+        return setItem;
+      } catch (err) {
+        if (err.response) {
+          console.log("Error: " + err.message);
+        }
+      }
+    };
     fetchdata();
-
     // setTimeout(() => {
     //   console.log("This will run after 1 second!");
     // }, 1000);
-    console.log("Call");
-  }, []);
+  }, [query]);
   console.log(item);
+  console.log(query);
   //item[i].author,item[i].title,item[i].num_comments,item[i].point
+  //date: format(new Date(item[i].created_at),'dd MMMM yyyy');
   return (
+    //{item.maps({ Id, author, created_at, title,num_comments, points })=>{
+    // <div key={Id}>
     <div id="ul">
-      <>
-        <h4>{item[0].title}</h4>
+      {/* 
+        <h4>{title}</h4>
         <ul>
-          <li>{item[0].points} points</li>
-          <li>by {item[0].author}</li>
-          <li>{item[0].num_comments} comments</li>
+          <li>{points} points by</li>{item[0].points}
+          <li>by {author}</li>
+          <li>with {num_comments}</li>
+          <li>on {created_at}</li>
         </ul>
-      </>
+      </div> */}
     </div>
+    //}
   );
 };
 
