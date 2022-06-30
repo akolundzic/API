@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Display from "./Display";
 import axios from "axios";
 
 const GetData = ({ id }) => {
@@ -31,7 +30,6 @@ const GetData = ({ id }) => {
             setItem(data.hits);
             setMaintitle(data.hits[0]);
           });
-        return setItem;
       } catch (err) {
         if (err.response) {
           console.log("Error: " + err.message);
@@ -42,27 +40,52 @@ const GetData = ({ id }) => {
     // setTimeout(() => {
     //   console.log("This will run after 1 second!");
     // }, 1000);
-  }, [query]);
+  }, []);
   console.log(item);
   console.log(query);
   //item[i].author,item[i].title,item[i].num_comments,item[i].point
   //date: format(new Date(item[i].created_at),'dd MMMM yyyy');
   return (
-    //{item.maps({ Id, author, created_at, title,num_comments, points })=>{
-    // <div key={Id}>
-    <div id="ul">
-      {/* 
-        <h4>{title}</h4>
-        <ul>
-          <li>{points} points by</li>{item[0].points}
-          <li>by {author}</li>
-          <li>with {num_comments}</li>
-          <li>on {created_at}</li>
-        </ul>
-      </div> */}
+    <div>
+      <div>
+        {item ? (
+          item.map((i) => {
+            <div>
+              <div>
+                <h4>{i.title}</h4>
+                <ul>
+                  <li>{i.points} points by</li>
+                  <li>by {i.author}</li>
+                  <li>with {i.num_comments}</li>
+                  <li>on {i.created_at}</li>
+                </ul>
+              </div>
+            </div>;
+          })
+        ) : (
+          <h2>Loading...</h2>
+        )}
+      </div>
     </div>
-    //}
   );
 };
 
 export default GetData;
+{
+  /* // item.maps({ Id, author, created_at, title,num_comments, points })=>{ */
+}
+{
+  /* // <div key={Id}>
+    // <div id="ul">
+      
+    //     <h4>{title}</h4>
+    //     <ul>
+    //       <li>{points} points by</li>{item[0].points}
+    //       <li>by {author}</li>
+    //       <li>with {num_comments}</li>
+    //       <li>on {created_at}</li>
+    //     </ul>
+    //   </div>
+    // </div>
+    // } */
+}

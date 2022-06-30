@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GetData from "./components/GetData";
 import Header from "./components/Header";
-import Display from "./components/Display";
 
 const APIURL = "http://hn.algolia.com/api/v1/search?query=";
 
