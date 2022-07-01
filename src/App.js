@@ -3,16 +3,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GetData from "./components/GetData";
 import Header from "./components/Header";
-
-const APIURL = "http://hn.algolia.com/api/v1/search?query=";
+import Test from "./components/Test";
 
 function App() {
   const [inputform, setInputform] = useState(""); //input search in header
   //const [isLoading, setLoading] = useState(false);
-  const [query, setQuery] = useState("story");
-  // //const [item, setItem] = useState([]);
-  // setQuery(query);
-  const id = "story";
+
   const handleChange = (e) => {
     setInputform(e.target.value);
   };
@@ -28,6 +24,7 @@ function App() {
       />
 
       <article>
+        {/* <Test /> */}
         <GetData id={inputform} />
       </article>
     </div>

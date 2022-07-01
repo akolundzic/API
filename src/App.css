@@ -113,13 +113,10 @@ input {
 
 /*LIST*/
 #ul {
-  margin-top: 0;
-  justify-content: left;
-  background-color: hsla(176, 100%, 63%, 0.055);
+  margin-top: 0.2rem;
+  justify-content: center;
   border-radius: 10px;
-  margin-left: 6rem;
-  margin-right: 6rem;
-  padding: 2rem 1rem;
+  padding-left: 6rem;
 }
 #ul li {
   display: inline;
@@ -128,4 +125,33 @@ input {
   color: rgb(142, 197, 171);
   font-size: 1rem;
   padding-left: 1rem;
+}
+a {
+  color: rgb(142, 197, 171);
+}
+
+/*Spinner---*/
+.spinner {
+  width: 8rem;
+  height: 8rem;
+  border: 0.4rem solid rgb(255, 255, 255);
+  border-top-color: #a8cc9e;
+  border-bottom-color: #9eccc7;
+  border-left-color: #b3cc9e;
+  border-right-color: #9eb8cc;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

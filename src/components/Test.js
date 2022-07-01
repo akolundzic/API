@@ -3,7 +3,7 @@ import React from "react";
 
 const Test = ({ inputform }) => {
   return (
-    <div>
+    <div className="spinner">
       <h1>Test Output in Child {inputform}</h1>
     </div>
   );

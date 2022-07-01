@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const moment = require("moment");
+let time = moment("20111031", "YYYYMMDD").fromNow();
 
 const GetData = ({ id }) => {
   // await axios.get(url, { params: { answer: 42 } });
   // url?params=answer, example: ...search?query=story
   const [item, setItem] = useState([]);
-  const [query, setQuery] = useState(id);
-  const [maintitle, setMaintitle] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // const format = require("dateformat");
+  console.log(`http://hn.algolia.com/api/v1/search?query=${id}`);
+
   useEffect(() => {
-    const fetchdata = async () => {
-      if (!query) {
-        setQuery("story");
-      }
+    setLoading(true);
+    const fetchdata = () => {
+      console.log(id);
+      // if (!query) {
+      //   setQuery("story");
+      // }
+
       try {
-        const res = await axios({
-          url: "http://hn.algolia.com/api/v1/search",
-          method: "get",
-          timeout: 1000,
-          params: { query: { query } },
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        await res
+        console.log();
+        axios
+          .get(`http://hn.algolia.com/api/v1/search?query=${id}`)
           .then((response) => response.data)
           .then((data) => {
             setItem(data.hits);
-            setMaintitle(data.hits[0]);
+            // setMaintitle(data.hits[0]);
           });
       } catch (err) {
         if (err.response) {
@@ -40,32 +39,34 @@ const GetData = ({ id }) => {
     // setTimeout(() => {
     //   console.log("This will run after 1 second!");
     // }, 1000);
-  }, []);
-  console.log(item);
-  console.log(query);
+  }, [id]);
+  // console.log(item);
   //item[i].author,item[i].title,item[i].num_comments,item[i].point
   //date: format(new Date(item[i].created_at),'dd MMMM yyyy');
+  // const usersinfo = users.map(info =>
+  //   <li key={person.id}>{person.name}</li>)
   return (
     <div>
-      <div>
-        {item ? (
-          item.map((i) => {
-            <div>
-              <div>
-                <h4>{i.title}</h4>
-                <ul>
-                  <li>{i.points} points by</li>
-                  <li>by {i.author}</li>
-                  <li>with {i.num_comments}</li>
-                  <li>on {i.created_at}</li>
-                </ul>
-              </div>
-            </div>;
-          })
-        ) : (
-          <h2>Loading...</h2>
-        )}
-      </div>
+      {/* {loading}?(<h1>loading ..</h1>):(<h1>notLoading...</h1>) */}
+      {item.map(
+        ({ author, title, objectId, url, num_comments, created_at }) => (
+          <div key={objectId}>
+            <div id="ul">
+              <h4>{title}</h4>
+              <ul>
+                <li>posted by {author}</li>
+                <li> ago {moment({ created_at }).fromNow()} </li>
+                <li> {num_comments} comments</li>
+                <li>
+                  <a href={url} target="_blank">
+                    article-link
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 };
@@ -88,4 +89,27 @@ export default GetData;
     //   </div>
     // </div>
     // } */
+}
+{
+  /* <div>
+        {item ? (
+          item.map((i) => {
+            <div>
+              <div>
+                <h4>{i.title}</h4>
+                <ul>
+                  <li>{i.points} points by</li>
+                  <li>by {i.author}</li>
+                  <li>with {i.num_comments}</li>
+                  <li>on {i.created_at}</li>
+                </ul>
+              </div>
+            </div>;
+          })
+        ) : (
+          <h2>Loading...</h2>
+        )} */
+}
+{
+  /* </div>  */
 }
