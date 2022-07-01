@@ -15,11 +15,6 @@ const GetData = ({ id }) => {
   useEffect(() => {
     setLoading(true);
     const fetchdata = () => {
-      console.log(id);
-      // if (!query) {
-      //   setQuery("story");
-      // }
-
       try {
         console.log();
         axios
@@ -36,18 +31,16 @@ const GetData = ({ id }) => {
       }
     };
     fetchdata();
+    setLoading(false);
     // setTimeout(() => {
     //   console.log("This will run after 1 second!");
     // }, 1000);
   }, [id]);
-  // console.log(item);
-  //item[i].author,item[i].title,item[i].num_comments,item[i].point
-  //date: format(new Date(item[i].created_at),'dd MMMM yyyy');
-  // const usersinfo = users.map(info =>
-  //   <li key={person.id}>{person.name}</li>)
+
   return (
-    <div>
-      {/* {loading}?(<h1>loading ..</h1>):(<h1>notLoading...</h1>) */}
+    <div className="box">
+      {/* if(loading){<div className=""></div>}
+    else{ */}
       {item.map(
         ({ author, title, objectId, url, num_comments, created_at }) => (
           <div key={objectId}>
@@ -67,7 +60,12 @@ const GetData = ({ id }) => {
           </div>
         )
       )}
+
+      {/* -----end map function ------------------*/}
+
+      {/*--- end div  */}
     </div>
+    // end render function
   );
 };
 
